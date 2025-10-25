@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Drishya & Sujith — Wedding Invite</title>
+  <link rel="stylesheet" href="invitation.css" />
+  <meta name="description" content="Wedding invitation website for Drishya & Sujith" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#home" aria-label="Home">D&S</a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="navLinks">☰</button>
+      <div id="navLinks" class="nav-links">
+        <a href="#story">Our Story</a>
+        <a href="#events">Events</a>
+        <a href="#venue">Venue & Stay</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+    </nav>
+    <div id="home" class="hero">
+      <div class="hero-inner">
+        <h1 class="title">Drishya &amp; Sujith</h1>
+        <p class="subtitle">With blessings, we invite you to our celebration</p>
+        <div class="date-pill">Muhurtham • 26 January 2026</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Story -->
+    <section id="story" class="section section-card">
+      <h2 class="section-title">Our Story</h2>
+      <div class="story-grid">
+        <article class="story-card">
+          <h3>Bride</h3>
+          <p>A few lines about the bride… graceful, kind, and a lover of jasmine mornings.</p>
+        </article>
+        <article class="story-card">
+          <h3>Groom</h3>
+          <p>A few lines about the groom… joyful, curious, and a true chai enthusiast.</p>
+        </article>
+        <article class="story-card story-timeline">
+          <h3>Timeline</h3>
+          <ul class="timeline">
+            <li><span>2019</span> First hello</li>
+            <li><span>2022</span> Said yes</li>
+            <li><span>2025</span> Tying the knot</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Events -->
+    <section id="events" class="section section-cream">
+      <h2 class="section-title">Events</h2>
+
+      <div class="events-grid">
+        <!-- Column 1 -->
+        <article class="event-card">
+          <img class="event-icon" src="icons/henna-leaf-swirls.jpg" alt="Henna cone & leafy swirls" />
+          <h3>Mehendi / Haldi</h3>
+          <p class="event-line"><strong>Morning:</strong> <span>Time</span></p>
+          <p class="event-note">Henna cone doodles with leafy swirl animation vibe</p>
+        </article>
+
+        <!-- Column 2 -->
+        <article class="event-card">
+          <img class="event-icon" src="icons/lamp-music-shimmer.jpg" alt="Soft lamp with music notes" />
+          <h3>Sangeet</h3>
+          <p class="event-line"><strong>Evening:</strong> <span>Time</span></p>
+          <p class="event-line"><strong>Venue:</strong> <span>Sangeet venue</span></p>
+          <p class="event-note">Soft lamp glow → music notes shimmer</p>
+        </article>
+
+        <!-- Column 3 -->
+        <article class="event-card">
+          <img class="event-icon" src="icons/flower-trail-temple.jpg" alt="Flower trail and temple icon" />
+          <h3>Wedding Ceremony</h3>
+          <p class="event-note">Flower trail drift-in • Temple icon accent</p>
+          <p class="event-line"><strong>Muhurtham:</strong> <span>Time</span></p>
+        </article>
+
+        <!-- Column 4 -->
+        <article class="event-card">
+          <img class="event-icon" src="icons/jasmine-garland-rings.jpg" alt="Jasmine garland and rings" />
+          <h3>Reception / Lunch</h3>
+          <p class="event-line"><strong>Timing:</strong> <span>Time</span></p>
+          <p class="event-note">Jasmine garland + rings pop-in motif</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Venue & Stay -->
+    <section id="venue" class="section section-card">
+      <h2 class="section-title">Venue &amp; Stay</h2>
+      <div class="venue-grid">
+        <div class="venue-card">
+          <h3>Wedding Venue</h3>
+          <p>Temple / Hall Name<br/>City, State</p>
+          <a class="btn" href="#" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+        <div class="venue-card">
+          <h3>Nearby Stays</h3>
+          <ul class="stay-list">
+            <li>Hotel Jasmine Court — 0.8 km</li>
+            <li>Banana Leaf Inn — 1.2 km</li>
+            <li>Backwater Suites — 1.9 km</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="section section-card">
+      <h2 class="section-title">Gallery</h2>
+      <div class="gallery-grid">
+        <!-- Replace placeholders with real images -->
+        <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+        <div class="ph"></div><div class="ph"></div><div class="ph"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>With love and gratitude — <strong>Drishya &amp; Sujith</strong></p>
+  </footer>
+
+  <!-- Tiny, accessible nav toggle without external JS -->
+  <script>
+    // Safe nav toggle (guard in case elements are missing)
+    (function () {
+      const btn = document.querySelector('.nav-toggle');
+      const links = document.getElementById('navLinks');
+      if (btn && links) {
+        btn.addEventListener('click', () => {
+          const open = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!open));
+          links.classList.toggle('open');
+        });
+      }
+
+      // Provide a graceful fallback for missing event images
+      const placeholders = document.querySelectorAll('.event-card img.event-icon, .events-grid img.event-icon');
+      placeholders.forEach(img => {
+        // If image already failed to load, trigger the handler
+        if (!img.complete || img.naturalWidth === 0) {
+          img.dispatchEvent(new Event('error'));
+        }
+        img.addEventListener('error', () => {
+          img.style.display = 'none';
+          const fallback = document.createElement('div');
+          fallback.className = 'event-icon-fallback';
+          // try to use emoji from alt text if available
+          fallback.textContent = (img.alt || '').split(' ')[0] || '•';
+          img.parentNode.insertBefore(fallback, img.nextSibling);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
